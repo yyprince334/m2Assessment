@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Order;
+import com.example.demo.exception.OrderException;
 import com.example.demo.service.IOrderService;
 
 @RestController
@@ -18,8 +19,8 @@ public class OrderController {
 	        this.orderService = orderService;
 	    }
 
-	    @PostMapping("/orders")
-	    public Order placeOrder(@RequestParam Long customerId, @RequestParam Long productId, @RequestParam int quantity) {
+	    @PostMapping("/placeorders")
+	    public Order placeOrder(@RequestParam Long customerId, @RequestParam Long productId, @RequestParam int quantity) throws OrderException {
 	        return orderService.placeOrder(customerId, productId, quantity);
 	    }
 
